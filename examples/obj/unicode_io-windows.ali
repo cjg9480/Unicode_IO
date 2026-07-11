@@ -1,0 +1,93 @@
+V "GNAT Lib v16"
+A -gnatA
+A -mtune=generic
+A -march=nocona
+P ZX
+
+RN
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_IMPLEMENTATION_PRAGMAS
+RV NO_OBSOLESCENT_FEATURES
+
+U unicode_io.windows%b	unicode_io-windows.adb	61a3f910 NE OO PK
+W interfaces%s		interfac.ads		interfac.ali
+W interfaces.c%s	i-c.adb			i-c.ali
+W system%s		system.ads		system.ali
+W unicode_io%s		unicode_io.adb		unicode_io.ali
+
+U unicode_io.windows%s	unicode_io-windows.ads	bdd3ab3b EE NE OO PK
+W unicode_io%s		unicode_io.adb		unicode_io.ali
+
+D ada.ads		20260517213308 76789da1 ada%s
+D a-unccon.ads		20260517213308 0e9b276f ada.unchecked_conversion%s
+D interfac.ads		20260517213308 9111f9c1 interfaces%s
+D i-c.ads		20260517213308 dbdd3be7 interfaces.c%s
+D system.ads		20260517213308 898beeee system%s
+D s-exctab.ads		20260517213308 91bef6ef system.exception_table%s
+D s-parame.ads		20260517213308 a1aeab5c system.parameters%s
+D s-stalib.ads		20260517213308 1c9580f6 system.standard_library%s
+D unicode_io.ads	20260711205610 2d0430b8 unicode_io%s
+D unicode_io-windows.ads  20260711205516 90d79b83 unicode_io.windows%s
+D unicode_io-windows.adb  20260711222210 a322b79a unicode_io.windows%b
+G a e
+G c Z s b [put unicode_io__windows 3 14 none]
+G c Z s b [put_line unicode_io__windows 6 14 none]
+G c Z s b [new_line unicode_io__windows 9 14 none]
+G c Z b b [getstdhandle unicode_io__windows 15 13 none]
+G c Z b b [multibytetowidechar unicode_io__windows 25 13 none]
+G c Z b b [writeconsolew unicode_io__windows 40 13 none]
+X 3 interfac.ads
+47K9*Interfaces 247e15 11|1r6 4r5 8r21 9r21 11r23 12r33 16r20 26r24 29r24
+. 31r24 32r14 56r14 57r14 77r13 78r22
+X 4 i-c.ads
+33K20*C 605e17 11|1w17 4r16 8r32 9r32 11r34 12r44 16r31 26r35 29r35 31r35
+. 32r25 56r25 57r25 77r24 78r33
+62I9*int<integer> 11|9r34 29r37 31r37 32r27 56r27 57r27
+64I9*long<integer> 11|12r46 16r33
+71M9*unsigned 11|11r36 26r37
+73M9*unsigned_long 11|8r34
+92M9*size_t 11|78r35
+246E9*wchar_t<wide_character>
+262A9*wchar_array(246E9)<92M9> 11|77r26
+X 5 system.ads
+37K9*System 214e11 11|2w6 17r14 28r24 30r24 41r31 42r31 44r32 45r31 55r14
+. 70r9 101r18
+67M9*Address 11|17r21 28r31 30r31 41r38 42r38 44r39 45r38 55r21
+69m4*Null_Address{67M9} 11|70r16 101r25
+X 9 unicode_io.ads
+1K9*Unicode_IO 11e15 10|1r9 11r5 11|6r14 131r5
+X 10 unicode_io-windows.ads
+1K20*Windows 9|1k9 10|11l16 11e23 11|6b25 131l16 131t23
+3U14*Put 4>7 11|52b11 109l5 109t8 116s4 126s4
+4a7 Text{string} 11|53b4 68r9 69r9 86r15 87r15
+6U14*Put_Line 7>7 11|111b11 119l5 119t13
+7a7 Text{string} 11|112b4 116r9
+9U14*New_Line 11|117s4 121b11 128l5 128t13
+X 11 unicode_io-windows.adb
+8M12 DWORD{4|73M9} 27r24 43r31 58r22 99r18
+9I12 BOOL{4|62I9} 46r14
+11m4 CP_UTF8{4|71M9} 66r9 84r15
+12i4 STD_OUTPUT_HANDLE{4|64I9} 62r28
+15V13 GetStdHandle{5|67M9} 16>7 21b7 62s14
+16i7 nStdHandle{4|64I9}
+25V13 MultiByteToWideChar{4|62I9} 26>7 27>7 28>7 29>7 30>7 31>7 36b7 65s6
+. 83s12
+26m7 CodePage{4|71M9}
+27m7 dwFlags{8M12}
+28m7 lpMultiByteStr{5|67M9}
+29i7 cbMultiByte{4|62I9}
+30m7 lpWideCharStr{5|67M9}
+31i7 cchWideChar{4|62I9}
+40V13 WriteConsoleW{9I12} 41>7 42>7 43>7 44>7 45>7 50b7 96s15
+41m7 hConsoleOutput{5|67M9}
+42m7 lpBuffer{5|67M9}
+43m7 nNumberOfCharsToWrite{8M12}
+44m7 lpNumberOfCharsWritten{5|67M9}
+45m7 lpReserved{5|67M9}
+55m4 Handle{5|67M9} 62m4 97r18
+56i4 Size{4|62I9} 64m4 73r7 78r42 89r15
+57i4 Result{4|62I9} 82m10 91r13 95m13 99r25
+58m4 Written{8M12} 93m13 100m18 100r18
+76a11 Wide_Buffer{4|262A9} 88m15 88r15 98m18 98r18
+123a4 CRLF{string} 126r9
+

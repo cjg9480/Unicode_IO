@@ -1,0 +1,131 @@
+with Interfaces.C;
+with System;
+
+use Interfaces.C;
+
+package body Unicode_IO.Windows is
+
+   subtype DWORD is Interfaces.C.unsigned_long;
+   subtype BOOL  is Interfaces.C.int;
+
+   CP_UTF8 : constant Interfaces.C.unsigned := 65001;
+   STD_OUTPUT_HANDLE : constant Interfaces.C.long := -11;
+
+
+   function GetStdHandle
+     (nStdHandle : Interfaces.C.long)
+      return System.Address;
+
+   pragma Import
+     (Stdcall,
+      GetStdHandle,
+      "GetStdHandle");
+
+
+   function MultiByteToWideChar
+     (CodePage       : Interfaces.C.unsigned;
+      dwFlags        : DWORD;
+      lpMultiByteStr : System.Address;
+      cbMultiByte    : Interfaces.C.int;
+      lpWideCharStr  : System.Address;
+      cchWideChar    : Interfaces.C.int)
+      return Interfaces.C.int;
+
+   pragma Import
+     (Stdcall,
+      MultiByteToWideChar,
+      "MultiByteToWideChar");
+
+
+   function WriteConsoleW
+     (hConsoleOutput        : System.Address;
+      lpBuffer              : System.Address;
+      nNumberOfCharsToWrite : DWORD;
+      lpNumberOfCharsWritten : System.Address;
+      lpReserved            : System.Address)
+      return BOOL;
+
+   pragma Import
+     (Stdcall,
+      WriteConsoleW,
+      "WriteConsoleW");
+procedure Put
+  (Text : String)
+is
+   Handle  : System.Address;
+   Size    : Interfaces.C.int;
+   Result  : Interfaces.C.int;
+   Written : aliased DWORD;
+
+begin
+
+   Handle := GetStdHandle (STD_OUTPUT_HANDLE);
+
+   Size :=
+     MultiByteToWideChar
+       (CP_UTF8,
+        0,
+        Text'Address,
+        Text'Length,
+        System.Null_Address,
+        0);
+
+   if Size > 0 then
+
+      declare
+          Wide_Buffer :
+            Interfaces.C.wchar_array
+               (1 .. Interfaces.C.size_t(Size));
+
+      begin
+
+         Result :=
+           MultiByteToWideChar
+             (CP_UTF8,
+              0,
+              Text'Address,
+              Text'Length,
+              Wide_Buffer'Address,
+              Size);
+
+         if Result > 0 then
+
+            Written := 0;
+
+            Result :=
+              WriteConsoleW
+                (Handle,
+                 Wide_Buffer'Address,
+                 DWORD (Result),
+                 Written'Address,
+                 System.Null_Address);
+
+         end if;
+
+      end;
+
+   end if;
+
+end Put;
+
+procedure Put_Line
+  (Text : String)
+is
+begin
+
+   Put (Text);
+   New_Line;
+
+end Put_Line;
+
+procedure New_Line
+is
+   CRLF : constant String := ASCII.CR & ASCII.LF;
+begin
+
+   Put (CRLF);
+
+end New_Line;
+
+
+end Unicode_IO.Windows;
