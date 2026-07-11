@@ -1,0 +1,18 @@
+# GNAT / GPRBuild output
+obj/
+*.o
+*.ali
+*.exe
+*.dll
+
+# GNAT Studio
+.gnatstudio/
+
+# Backup files
+*.backup
+*.bak
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
