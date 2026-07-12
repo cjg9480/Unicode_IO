@@ -13,6 +13,13 @@ obj/
 *.bak
 *~
 
+# Build libraries
+lib/
+
+# Local backup directory
+backup/
+
 # OS files
 .DS_Store
 Thumbs.db
+
