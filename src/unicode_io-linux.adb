@@ -1,12 +1,12 @@
-with Unicode_IO.Linux;
+with Ada.Text_IO;
 
-package body Unicode_IO is
+package body Unicode_IO.Linux is
 
    procedure Put
      (Text : String)
    is
    begin
-      Unicode_IO.Linux.Put(Text);
+      Ada.Text_IO.Put(Text);
    end Put;
 
 
@@ -14,14 +14,14 @@ package body Unicode_IO is
      (Text : String)
    is
    begin
-      Unicode_IO.Linux.Put_Line(Text);
+      Ada.Text_IO.Put_Line(Text);
    end Put_Line;
 
 
    procedure New_Line
    is
    begin
-      Unicode_IO.Linux.New_Line;
+      Ada.Text_IO.New_Line;
    end New_Line;
 
-end Unicode_IO;
+end Unicode_IO.Linux;
