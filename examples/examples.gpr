@@ -1,14 +1,17 @@
+with "../unicode_io.gpr";
+
 project Examples is
 
-   for Source_Dirs use
-     (".",
-      "../src");
-
+   for Source_Dirs use (".");
    for Object_Dir use "obj";
 
+<<<<<<< HEAD
    for Main use
      ("hello.adb",
       "korean.adb",
       "emoji.adb");
 
 end Examples;
+=======
+end Examples;
+>>>>>>> 4e7c343 (Reorganize tests directory and update examples project)
