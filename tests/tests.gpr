@@ -1,0 +1,16 @@
+project Tests is
+
+   for Source_Dirs use
+     (".",
+      "../src");
+
+   for Object_Dir use "obj";
+
+   for Main use
+     ("test_ascii.adb",
+      "test_korean.adb",
+      "test_emoji.adb",
+      "test_mixed.adb",
+      "test_types.adb");
+
+end Tests;
