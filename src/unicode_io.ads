@@ -1,11 +1,21 @@
 package Unicode_IO is
 
-   procedure Put
-     (Text : String);
+   procedure Put (Item : String);
+   procedure Put (Item : Character);
+   procedure Put (Item : Boolean);
+   procedure Put (Item : Integer);
+   procedure Put (Item : Long_Integer);
+   procedure Put (Item : Float);
+   procedure Put (Item : Long_Float);
 
-   procedure Put_Line
-     (Text : String);
+
+   procedure Put_Line (Item : String);
+   procedure Put_Line (Item : Character);
+   procedure Put_Line (Item : Boolean);
+   procedure Put_Line (Item : Integer);
+   procedure Put_Line (Item : Long_Integer);
+   procedure Put_Line (Item : Float);
+   procedure Put_Line (Item : Long_Float);
 
    procedure New_Line;
-
 end Unicode_IO;

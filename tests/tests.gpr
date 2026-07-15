@@ -11,6 +11,7 @@ project Tests is
       "test_korean.adb",
       "test_emoji.adb",
       "test_mixed.adb",
+      "test_newline.adb",
       "test_types.adb");
 
 end Tests;
