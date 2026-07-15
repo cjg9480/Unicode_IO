@@ -1,51 +1,66 @@
 # Unicode_IO
 
-A small Ada Unicode output library for Windows and future cross-platform Ada projects.
+A small Unicode console I/O library for Ada.
+
+Unicode_IO provides portable Unicode output support for Ada projects.
 
 ## Project Status
 
 Current version:
 
-**Unicode_IO v0.1 - Windows UTF-16 Console Backend**
+**Unicode_IO v0.4**
 
-Verified:
+Implemented:
 
-* UTF-8 Ada String input
-* UTF-16 conversion using Windows API
-* Unicode console output
-* Korean Hangul output
-* Emoji output
+* UTF-8 Unicode output
+* Korean / Japanese / Chinese support
+* Emoji support
+* Linux backend
+* Windows Unicode backend
+* Strong Ada type overloads
 
-Tested examples:
+---
 
-```
-Hello Ada Unicode!
-안녕하세요 세계!
-Unicode 🚀 Test
+## Supported Types
+
+Unicode_IO supports:
+
+* `String`
+* `Character`
+* `Boolean`
+* `Integer`
+* `Long_Integer`
+* `Float`
+* `Long_Float`
+
+Example:
+
+```ada
+with Unicode_IO;
+
+procedure Hello is
+begin
+   Unicode_IO.Put_Line ("Hello Ada 😀");
+   Unicode_IO.Put_Line (2026);
+   Unicode_IO.Put_Line (True);
+end Hello;
 ```
 
 ---
 
-## Environment
+## Development Environment
 
-Current development environment:
+Current test environment:
+
+* OS: Linux (HamoniKR / Ubuntu based)
+* Compiler: GNAT
+* Build system: GPRBuild
+
+Windows backend development:
 
 * OS: Windows 11
 * Shell: MSYS2 UCRT64
 * Compiler: GNAT 16.1.0
-* Build system: GPRBuild
-
-Check compiler:
-
-```bash
-gnat --version
-```
-
-Check build tool:
-
-```bash
-gprbuild --version
-```
 
 ---
 
@@ -57,17 +72,20 @@ Unicode_IO
 ├── src
 │   ├── unicode_io.ads
 │   ├── unicode_io.adb
-│   ├── unicode_io-windows.ads
-│   └── unicode_io-windows.adb
+│   ├── unicode_io-linux.ads
+│   ├── unicode_io-linux.adb
+│   ├── unicode_io-platform.ads
+│   └── unicode_io-platform.adb
 │
 ├── examples
-│   ├── hello.adb
-│   ├── korean.adb
-│   └── emoji.adb
 │
 ├── tests
-│
-├── obj
+│   ├── test_ascii.adb
+│   ├── test_korean.adb
+│   ├── test_emoji.adb
+│   ├── test_mixed.adb
+│   ├── test_types.adb
+│   └── test_newline.adb
 │
 └── unicode_io.gpr
 ```
@@ -76,45 +94,53 @@ Unicode_IO
 
 ## Build
 
-Example:
+Library build:
 
 ```bash
-gprbuild -P unicode_io.gpr examples/korean.adb
+gprbuild -P unicode_io.gpr
 ```
 
-Run:
+Run tests:
 
 ```bash
-./obj/korean.exe
+cd tests
+gprbuild -P tests.gpr
 ```
 
-Example output:
-
-```
-Hello Ada Unicode!
-안녕하세요 세계!
-```
-
-Emoji test:
+Examples:
 
 ```bash
-gprbuild -P unicode_io.gpr examples/emoji.adb
-```
-
-Output:
-
-```
-안녕하세요 Ada 😀
-Unicode 🚀 Test
+./obj/test_korean
+./obj/test_emoji
+./obj/test_types
+./obj/test_newline
 ```
 
 ---
 
-## Windows Backend
+## Backend Design
 
-The Windows implementation uses:
+Unicode_IO separates the public API from platform implementations.
 
-* `GetStdHandle`
+```
+Unicode_IO
+      |
+      v
+Platform Backend
+      |
+      +---- Linux
+      |
+      +---- Windows
+```
+
+Linux:
+
+* UTF-8 console output
+* Ada.Text_IO backend
+
+Windows:
+
+* UTF-8 to UTF-16 conversion
 * `MultiByteToWideChar`
 * `WriteConsoleW`
 
@@ -124,40 +150,32 @@ Data flow:
 Ada String (UTF-8)
         |
         v
-MultiByteToWideChar
+UTF conversion
         |
         v
-UTF-16 wchar_array
-        |
-        v
-WriteConsoleW
+Console Unicode output
 ```
 
 ---
 
 ## Future Plans
 
-Planned development:
+Planned:
 
-* Linux UTF-8 backend
-* Unified Windows/Linux API
-* AdaBots integration
+* Windows backend refinement
+* Wide_Wide_String support
+* macOS backend
+* Alire package support
 * GtkAda integration
+* AdaBots integration
 * Ada WebAssembly support
 
-Target API:
+Goal:
 
-```ada
-with Unicode_IO;
-
-Unicode_IO.Put_Line("Hello Ada 😀");
-```
-
-The same source code should work across platforms.
+The same Ada source code should work across platforms.
 
 ---
 
 ## License
 
 To be decided.
-# HamoniKR_Unicode_IO
