@@ -83,4 +83,24 @@ package body Unicode_IO is
       New_Line;
    end Put_Line;
 
+   procedure Put (Item : Wide_String) is
+   begin
+      null;
+   end Put;
+
+   procedure Put (Item : Wide_Wide_String) is
+   begin
+      null;
+   end Put;
+
+   procedure Put_Line (Item : Wide_String) is
+   begin
+      null;
+   end Put_Line;
+
+   procedure Put_Line (Item : Wide_Wide_String) is
+   begin
+      null;
+   end Put_Line;
+
 end Unicode_IO;

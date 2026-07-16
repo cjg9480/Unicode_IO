@@ -5,13 +5,7 @@ project Examples is
    for Source_Dirs use (".");
    for Object_Dir use "obj";
 
-<<<<<<< HEAD
    for Main use
-     ("hello.adb",
-      "korean.adb",
-      "emoji.adb");
+     ("conversions.adb");
 
 end Examples;
-=======
-end Examples;
->>>>>>> 4e7c343 (Reorganize tests directory and update examples project)
