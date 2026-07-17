@@ -1,24 +1,26 @@
+with Ada.Characters.Conversions;
+
 package body Unicode_IO.Conversions is
+
 
    function To_UTF8
      (Item : Wide_Wide_String)
-      return String is
+      return String
+   is
    begin
-      return "";
+      return Ada.Characters.Conversions.To_String (Item);
    end To_UTF8;
 
-   function To_UTF8
-     (Item : Wide_String)
-      return String is
-   begin
-      return "";
-   end To_UTF8;
 
-   function To_Wide_Wide
-     (Item : Wide_String)
-      return Wide_Wide_String is
+
+   function From_UTF8
+     (Item : String)
+      return Wide_Wide_String
+   is
    begin
-      return "";
-   end To_Wide_Wide;
+      return Ada.Characters.Conversions.To_Wide_Wide_String
+        (Item);
+   end From_UTF8;
+
 
 end Unicode_IO.Conversions;
