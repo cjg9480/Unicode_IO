@@ -1,4 +1,6 @@
 with Unicode_IO.Linux;
+with Unicode_IO.Linux;
+with Ada.Characters.Conversions;
 
 package body Unicode_IO is
 
@@ -83,24 +85,38 @@ package body Unicode_IO is
       New_Line;
    end Put_Line;
 
-   procedure Put (Item : Wide_String) is
-   begin
-      null;
-   end Put;
 
-   procedure Put (Item : Wide_Wide_String) is
+   procedure Put_Wide
+      (Item : Wide_Wide_String)
+   is
    begin
-      null;
-   end Put;
+      Unicode_IO.Linux.Put
+         (Ada.Characters.Conversions.To_String (Item));
+   end Put_Wide;
 
-   procedure Put_Line (Item : Wide_String) is
+   procedure Put_Line_Wide
+      (Item : Wide_Wide_String)
+   is
    begin
-      null;
-   end Put_Line;
+      Put_Wide (Item);
+      New_Line;
+   end Put_Line_Wide;
 
-   procedure Put_Line (Item : Wide_Wide_String) is
+   procedure Put_Wide
+      (Item : Wide_Wide_Character)
+   is
    begin
-      null;
-   end Put_Line;
+      Put_Wide
+         (Wide_Wide_String'(1 => Item));
+   end Put_Wide;
+
+   procedure Put_Line_Wide
+      (Item : Wide_Wide_Character)
+   is
+   begin
+      Put_Wide (Item);
+      New_Line;
+   end Put_Line_Wide;
+
 
 end Unicode_IO;

@@ -3,7 +3,6 @@ with "../unicode_io.gpr";
 project Tests is
 
    for Source_Dirs use (".");
-
    for Object_Dir use "obj";
 
    for Main use
@@ -14,6 +13,7 @@ project Tests is
       "test_mixed.adb",
       "test_newline.adb",
       "test_put.adb",
+      "test_wide.adb",
       "test_types.adb");
 
 end Tests;

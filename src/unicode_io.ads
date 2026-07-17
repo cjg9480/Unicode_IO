@@ -8,10 +8,6 @@ package Unicode_IO is
    procedure Put (Item : Float);
    procedure Put (Item : Long_Float);
 
-   --procedure Put (Item : Wide_String);
-   --procedure Put (Item : Wide_Wide_String);
-
-
    procedure Put_Line (Item : String);
    procedure Put_Line (Item : Character);
    procedure Put_Line (Item : Boolean);
@@ -20,9 +16,19 @@ package Unicode_IO is
    procedure Put_Line (Item : Float);
    procedure Put_Line (Item : Long_Float);
 
-   --procedure Put_Line (Item : Wide_String);
-   --procedure Put_Line (Item : Wide_Wide_String);
+   -- v0.5 Wide Unicode support
+   procedure Put_Wide
+      (Item : Wide_Wide_String);
 
+   procedure Put_Line_Wide
+      (Item : Wide_Wide_String);
+
+   procedure Put_Wide
+      (Item : Wide_Wide_Character);
+
+   procedure Put_Line_Wide
+      (Item : Wide_Wide_Character);
 
    procedure New_Line;
+
 end Unicode_IO;
