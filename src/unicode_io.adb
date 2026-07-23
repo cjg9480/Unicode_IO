@@ -119,4 +119,16 @@ package body Unicode_IO is
    end Put_Line_Wide;
 
 
+
+   procedure Put_Error (Item : String) is
+   begin
+      Unicode_IO.Linux.Put_Error (Item);
+   end Put_Error;
+
+
+   procedure Put_Error_Line (Item : String) is
+   begin
+      Unicode_IO.Linux.Put_Error_Line (Item);
+   end Put_Error_Line;
+
 end Unicode_IO;

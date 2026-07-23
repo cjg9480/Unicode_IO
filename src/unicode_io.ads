@@ -7,6 +7,7 @@ package Unicode_IO is
    procedure Put (Item : Long_Integer);
    procedure Put (Item : Float);
    procedure Put (Item : Long_Float);
+   procedure Put_Error (Item : String);
 
    procedure Put_Line (Item : String);
    procedure Put_Line (Item : Character);
@@ -15,6 +16,7 @@ package Unicode_IO is
    procedure Put_Line (Item : Long_Integer);
    procedure Put_Line (Item : Float);
    procedure Put_Line (Item : Long_Float);
+   procedure Put_Error_Line (Item : String);
 
    -- v0.5 Wide Unicode support
    procedure Put_Wide

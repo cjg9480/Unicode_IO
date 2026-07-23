@@ -18,4 +18,19 @@ package body Unicode_IO.Linux is
       New_Line;
    end Put_Line;
 
+   procedure Put_Error (Text : String) is
+   begin
+      Ada.Text_IO.Put
+      (Ada.Text_IO.Standard_Error,
+         Text);
+   end Put_Error;
+
+
+   procedure Put_Error_Line (Text : String) is
+   begin
+      Ada.Text_IO.Put_Line
+      (Ada.Text_IO.Standard_Error,
+         Text);
+   end Put_Error_Line;
+
 end Unicode_IO.Linux;

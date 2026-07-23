@@ -8,4 +8,10 @@ package Unicode_IO.Linux is
 
    procedure New_Line;
 
+   procedure Put_Error
+     (Text : String);
+
+   procedure Put_Error_Line
+     (Text : String);
+
 end Unicode_IO.Linux;
